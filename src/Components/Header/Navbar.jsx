@@ -1,7 +1,30 @@
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
+
+    const { user, logOut, loadingState } = useContext(AuthContext);
+    const [showUserName, setShowUserName] = useState(false);
+    const [profilePicLoaded, setProfilePicLoaded] = useState(false);
+
+    if (loadingState && !profilePicLoaded) {
+        return <span className="loading loading-spinner text-info"></span>;
+    }
+    const handleMouseEnter = () => {
+        setShowUserName(true);
+    };
+
+    const handleMouseLeave = () => {
+        setShowUserName(false);
+    };
+
+
+
+
+
+
     const items = <>
         <NavLink className="group flex cursor-pointer flex-col">
             <span className="flex font-bold text-[#52c9af]">Home</span> <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
@@ -40,14 +63,43 @@ const Navbar = () => {
                         <ul className="flex items-center justify-between gap-10">
                             {items}
                         </ul>
-                        <div className="flex items-center justify-between gap-4">
+                        <div className="navbar-end ">
+                            {user ? (
+                                <div className="flex items-center">
+                                    <div className="relative inline-block">
+                                        <img
+                                            src={user.photoURL}
+                                            alt="User Profile"
+                                            className="h-12 w-12 rounded-full cursor-pointer"
+                                            onMouseEnter={handleMouseEnter}
+                                            onMouseLeave={handleMouseLeave}
+                                            onLoad={() => setProfilePicLoaded(true)}  // Set loaded state to true when the image loads
+                                            onError={() => setProfilePicLoaded(false)}  // Handle error in loading image
+                                        />
+                                        {showUserName && (
+                                            <span className="absolute left-14 top-0 text-sm text-black bg-white shadow-md p-2 rounded-md">{user.displayName}</span>
+                                        )}
+                                    </div>
+                                    <button
+                                        className='ml-4 p-2 text-white text-[14px] font-semibold rounded-md shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-300 bg-gradient-to-r from-red-400 to-red-500'
+                                        onClick={logOut}
+                                    >
+                                        Logout
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="flex gap-3">
 
-                            <Link to='/logIn'>
-                                <button className="rounded-full bg-[#52c9af] px-6 py-2 transition-all duration-300 hover:scale-90 font-bold text-white">LogIn</button>
-                            </Link>
-                            <Link to='/signUp'>
-                                <button className="rounded-full bg-[#52c9af] px-6 py-2 transition-all duration-300 hover:scale-90 font-bold text-white">Register</button>
-                            </Link>
+                                    <div className="flex items-center justify-between gap-5">
+                                        <Link to='/logIn'>
+                                            <button className="rounded-full bg-[#52c9af] px-6 py-2 transition-all duration-300 hover:scale-90 font-bold text-white">LogIn</button>
+                                        </Link>
+                                        <Link to='/signUp'>
+                                            <button className="rounded-full bg-[#52c9af] px-6 py-2 transition-all duration-300 hover:scale-90 font-bold text-white">Register</button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </nav>

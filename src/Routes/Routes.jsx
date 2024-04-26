@@ -7,6 +7,7 @@ import AddCraft from "../Components/AddCraft/AddCraft";
 import MyArtAndCraftList from "../Components/MyArtAndCraftList/MyArtAndCraftList";
 import Login from "../Components/LoginPage/Login";
 import SignUp from "../Components/LoginPage/SignUp";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -21,10 +22,11 @@ export const router = createBrowserRouter([
         {
           path: "/allArtAndCrafts",
           element: <AllArtAndCrafts />,
+          loader: () => fetch('http://localhost:5000/addCraft')
         },
         {
           path: "/addCraft",
-          element: <AddCraft />,
+          element: <PrivateRoute><AddCraft /></PrivateRoute>,
         },
         {
           path: "/myArtAndCraftList",

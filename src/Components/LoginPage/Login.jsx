@@ -1,7 +1,58 @@
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
+
+
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const { signIn } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [password, setPassword] = useState(false);
+    const navigate = useNavigate();
+    const [passwordShow, setPasswordShow] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        const newPassword = e.target.value;
+        setPassword(newPassword);
+        setPasswordShow(newPassword !== '');
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const { email, password } = formData;
+        setLoading(true);
+        setError('');
+    
+        await signIn(email, password)
+            .then(() => {
+                Swal.fire("LogIn Successfully");
+                setFormData({ email: '', password: '' });
+                navigate("/");
+            })
+            .catch(error => {
+                console.error(error);
+                setError('Invalid email or password. Please try again.');
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
     return (
         <div>
             <div className="flex h-screen items-center justify-center bg-[#93cabe]/20 p-6 md:p-0">
@@ -19,14 +70,42 @@ const Login = () => {
                     </div>
                     {/* input side  */}
                     <div className="flex w-full flex-col justify-center bg-white py-10 lg:w-[60%]">
-                        <h2 className="pb-8 text-center text-3xl font-bold text-[#82e0cc]">Login Here</h2>
-                        <form className="flex  w-full flex-col items-center justify-center gap-4">
-                            <input className="w-[80%] rounded-lg border border-[#82e0cc] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#a3ddd1]/50 md:w-[60%]" type="email" placeholder="Email" name="email" />
-                            <input className="w-[80%] rounded-lg border border-[#82e0cc] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#a3ddd1]/50 md:w-[60%]" type="password" placeholder="Password" name="password" />
+                        <h2 className="pb-8 text-center text-3xl font-bold text-[#82e0cc]">Login Here</h2>{error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+                        <form className="flex  w-full flex-col items-center justify-center gap-4" onSubmit={handleSubmit}>
+                            <input className="w-[80%] rounded-lg border border-[#82e0cc] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#a3ddd1]/50 md:w-[60%]" value={formData.name} onChange={handleChange} type="email" placeholder="Email" name="email" />
+                            <div className="relative">
+                                <input
+                                    className="w-[80%] rounded-lg border border-[#82e0cc] px-6 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-[#a3ddd1]/50 md:w-[60%] p-3 block outline-none text-black"
+                                    id="_password"
+                                    type={!passwordShow ? 'text' : 'password'}
+                                    name='password'
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    placeholder=".............."
+                                    min={5}
+                                    required
+                                />
+                                {password && (
+                                    <span
+                                        onClick={() => setPasswordShow(!passwordShow)}
+                                        className=" absolute top-3 right-2 cursor-pointer text-[14px] text-black text-2xl "
+                                    >
+                                        {passwordShow ? <FaEye /> : <FaEyeSlash />}
+                                    </span>
+                                )}
+                            </div>
+
                             <Link to='/signUp'>
                                 <p className="text-[14px] text-gray-400">Do not have an account ? <a className="text-[#82e0cc] ">Create one</a></p>
                             </Link>
-                            <input className="w-[80%] rounded-lg bg-[#82e0cc] px-6 py-2 font-medium text-white md:w-[60%]" type="submit" />
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className={`w-[80%] rounded-lg bg-[#82e0cc] px-6 py-2 font-medium text-white md:w-[60%] ${loading ? 'opacity-50 cursor-not-allowed' : ''
+                                    }`}
+                            >
+                                {loading ? 'Signing Up...' : 'Sign Up'}
+                            </button>
                         </form>
                         {/* divider  */}
                         <div className="my-8 flex items-center px-8">
