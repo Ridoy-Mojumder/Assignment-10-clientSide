@@ -8,6 +8,8 @@ import MyArtAndCraftList from "../Components/MyArtAndCraftList/MyArtAndCraftList
 import Login from "../Components/LoginPage/Login";
 import SignUp from "../Components/LoginPage/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import ArtAndCraftDetails from "../Components/AllArtAndCrafts/ArtAndCraftDetails";
+import UpdateArtAndCart from "../Components/UpdateArtAndCart/UpdateArtAndCart";
 
 export const router = createBrowserRouter([
     {
@@ -18,11 +20,22 @@ export const router = createBrowserRouter([
         {
           path: "/",
           element: <Home />,
+          loader: () => fetch('http://localhost:5000/addCraft')
         },
         {
           path: "/allArtAndCrafts",
           element: <AllArtAndCrafts />,
           loader: () => fetch('http://localhost:5000/addCraft')
+        },
+        {
+          path: "/allArtAndCrafts/:id",
+          element: <ArtAndCraftDetails />,
+          loader: ({params}) => fetch(`http://localhost:5000/addCraft/${params.id}`)
+        },
+        {
+          path: "/updateArtAndCrafts/:id",
+          element: <PrivateRoute><UpdateArtAndCart /></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/addCraft/${params.id}`)
         },
         {
           path: "/addCraft",
