@@ -43,7 +43,8 @@ export const router = createBrowserRouter([
         },
         {
           path: "/myArtAndCraftList",
-          element: <MyArtAndCraftList />,
+          element: <PrivateRoute><MyArtAndCraftList /></PrivateRoute>,
+          loader: () => fetch('http://localhost:5000/addCraft')
         },
         {
           path: "/logIn",

@@ -33,7 +33,7 @@ const Navbar = () => {
             <span className="flex font-bold text-[#52c9af]">AllArt&crafts</span> <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
         </NavLink>
         <NavLink to='/addCraft' className="group flex cursor-pointer flex-col">
-            <span className="flex font-bold text-[#52c9af]">AddCraft</span> <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
+            <span className="flex font-bold text-[#52c9af]">AddArt&Craft</span> <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
         </NavLink>
         <NavLink to='/myArtAndCraftList' className="group flex cursor-pointer flex-col">
             <span className="flex font-bold text-[#52c9af]">MyArt&CraftList</span>  <span className="mt-[2px] h-[3px] w-[0px] rounded-full bg-[#278f7d] transition-all duration-300 group-hover:w-full"></span>
@@ -45,7 +45,7 @@ const Navbar = () => {
                 <nav className="flex items-center justify-between bg-[] px-4 py-2 text-white">
                     <div className="navbar-start">
                         <div className="dropdown">
-                            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-sky-700">
+                            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden text-sky-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </div>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-1 shadow bg-base-100 rounded-box w-44 font-bold flex items-center justify-between gap-10 text-black">
@@ -59,18 +59,21 @@ const Navbar = () => {
                         </div>
 
                     </div>
-                    <div className="hidden md:flex md:items-center md:justify-between gap-16">
-                        <ul className="flex items-center justify-between gap-10">
-                            {items}
-                        </ul>
+                    <div className=" flex md:items-center md:justify-between gap-16">
+                        <div className="hidden md:flex md:items-center md:justify-between gap-16">
+                            <ul className="flex items-center justify-between gap-10">
+                                {items}
+                            </ul>
+                        </div>
+
                         <div className="navbar-end ">
                             {user ? (
-                                <div className="flex items-center">
+                                <div className="flex ">
                                     <div className="relative inline-block">
                                         <img
                                             src={user.photoURL}
                                             alt="User Profile"
-                                            className="h-12 w-12 rounded-full cursor-pointer"
+                                            className="h-12 w-12 rounded-full cursor-pointer ml-10 p-1 "
                                             onMouseEnter={handleMouseEnter}
                                             onMouseLeave={handleMouseLeave}
                                             onLoad={() => setProfilePicLoaded(true)}  // Set loaded state to true when the image loads
@@ -81,7 +84,7 @@ const Navbar = () => {
                                         )}
                                     </div>
                                     <button
-                                        className='ml-4 p-2 text-white text-[14px] font-semibold rounded-md shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-300 bg-gradient-to-r from-red-400 to-red-500'
+                                        className='ml-16 md:ml-16 p-3 text-white text-[14px] font-semibold rounded-md shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-300 bg-gradient-to-r from-red-400 to-red-500'
                                         onClick={logOut}
                                     >
                                         Logout
