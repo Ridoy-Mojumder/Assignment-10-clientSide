@@ -4,6 +4,7 @@ import BannerSection from "./BannerSection";
 import { Fade } from "react-awesome-reveal";
 import ContactUs from "../ContactUs/ContactUs";
 import Team from "../Team/Team";
+import ArtAndCraftCategory from "../ArtAndCraftCategory/ArtAndCraftCategory";
 
 const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +47,7 @@ const Home = () => {
                         </div>
                     </Fade>
                     <Fade cascade damping={0.2}>
+                        <ArtAndCraftCategory></ArtAndCraftCategory>
                         <Team />
                         <ContactUs />
                     </Fade>

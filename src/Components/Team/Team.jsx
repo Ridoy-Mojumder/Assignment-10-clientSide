@@ -3,9 +3,9 @@ import { Fade } from 'react-awesome-reveal';
 
 const Team = () => {
     return (
-        <div className="bg-gray-100 py-12">
+        <div className="py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl font-semibold text-center text-[#331A15] mb-8">Our Team</h2>
+                <h2 className="text-3xl font-semibold text-center text-[#52c9af] mb-8">Our Team</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                     {/* Team member card */}
                     <Fade direction="up" cascade>

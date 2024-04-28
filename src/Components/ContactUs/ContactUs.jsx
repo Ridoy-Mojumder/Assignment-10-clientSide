@@ -33,9 +33,9 @@ const ContactUs = () => {
     }
 
     return (
-        <div className="bg-white py-12 px-4 sm:px-6 lg:px-8">
+        <div className="bg-white mb-10 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-4xl font-bold text-center text-[#2e8572] mb-12">Contact Us</h2>
+                <h2 className="text-4xl font-bold text-center text-[#52c9af] mb-12">Contact Us</h2>
                 <div className="flex flex-col md:flex-row items-center justify-center gap-20">
                     <div className="mb-6 md:mb-0">
                         <Lottie options={defaultOptions} height={300} width={300} />

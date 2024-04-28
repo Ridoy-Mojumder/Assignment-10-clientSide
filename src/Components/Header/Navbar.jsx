@@ -53,8 +53,8 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <div className="hidden md:flex justify-start items-start ">
-                            <div className="bg-gray-200 p-2 rounded-full mt-[-20px]">
-                                <img src="https://i.ibb.co/Bn8t4D7/acc1b5c8-3d02-4fd2-bd04-b6380df06e0e.jpg" className="w-[75px] h-[75px] rounded-full" alt="" />
+                            <div className="text-black p-2 flex justify-center items-center gap-2 mt-[-20px]">
+                                <img src="https://i.ibb.co/Bn8t4D7/acc1b5c8-3d02-4fd2-bd04-b6380df06e0e.jpg" className="w-[75px] h-[75px] rounded-full " alt="" />
                             </div>
                         </div>
 

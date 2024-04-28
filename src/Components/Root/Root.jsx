@@ -16,8 +16,10 @@ const Root = () => {
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
             <div id={theme}>
+                <div  className="max-w-7xl mx-auto">
                 <Navbar></Navbar>
-                <label className="swap swap-rotate" onChange={toggleTheme} checked = {theme === "dark"}>
+                </div>
+                <label className="swap swap-rotate ml-10" onChange={toggleTheme} checked = {theme === "dark"}>
 
                     {/* this hidden checkbox controls the state */}
                     <input type="checkbox" className="theme-controller" value="synthwave" />
