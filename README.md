@@ -1,8 +1,13 @@
-# React + Vite
+Category: Art and Craft Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Art and Craft Store
+CraftyHub is your go-to destination for all things art and craft, connecting artisans and enthusiasts alike. Explore a world of creativity and inspiration with our vibrant community!
 
-Currently, two official plugins are available:
+Browse Unique Creations: Discover a diverse collection of handmade art and crafts from talented artisans around the globe.
+Personalized Recommendations: Tailored suggestions based on your preferences ensure you never miss out on the perfect piece for your collection.
+Sell Your Creations: Are you an artisan? Showcase your work to a global audience and turn your passion into profit.
+Community Engagement: Join discussions, share tips, and connect with fellow crafters in our thriving online community.
+Secure Transactions: Rest easy knowing that your transactions are safe and secure, whether you're buying or selling.
+Visit CraftyHub now and let your creativity flourish!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live Site URL: https://6630a94cbf6a2e9a106b8b46--tangerine-snickerdoodle-50d788.netlify.app/
