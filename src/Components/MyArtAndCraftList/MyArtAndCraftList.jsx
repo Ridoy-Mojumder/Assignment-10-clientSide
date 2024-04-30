@@ -65,6 +65,9 @@ const MyArtAndCraftList = () => {
                                         <img src={item.photoUrl} alt={item.itemName} className="w-full h-40 object-cover mb-4 rounded-lg" />
                                         <h2 className="text-lg font-semibold text-gray-800 mb-2">{item.itemName}</h2>
                                         <p className="text-sm text-gray-600 mb-4">{item.shortDescription}</p>
+                                        <p className="text-sm text-gray-600 mb-4">Rating: {item.rating}</p>
+                                        <p className="text-sm text-gray-600 mb-4">Stock Status: {item.stockStatus}</p>
+                                        <p className="text-sm text-gray-600 mb-4">Customization: {item.customization}</p>
                                         <div className="flex items-center justify-between">
                                             <span className="text-lg text-[#52c9af] font-bold">${item.price}</span>
                                             <Link to={`/allArtAndCrafts/${item._id}`}>
