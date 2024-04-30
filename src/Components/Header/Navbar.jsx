@@ -69,7 +69,10 @@ const Navbar = () => {
                                                 className="h-12 w-12  rounded-full cursor-pointer border border-[#278f7d] "
                                             />
                                             {/* Hover Text */}
-                                            
+                                            <div className="absolute -bottom-12 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-16 group-hover:opacity-100  ">
+                                                <p className="rounded-md bg-[#278f7d] px-3 py-2 text-white shadow-[0px_0px_10px_0px_#278f7d]"> {user.displayName}</p>
+                                                <span className="absolute -top-2 left-[50%] h-0 w-0 -translate-x-1/2 -rotate-[45deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-[#278f7d] shadow-[0px_0px_10px_0px_#278f7d]"></span>
+                                            </div>
                                             {/* Hover button */}
                                         </div>
                                     </div>
