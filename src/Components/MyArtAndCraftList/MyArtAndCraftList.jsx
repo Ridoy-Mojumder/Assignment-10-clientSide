@@ -9,6 +9,7 @@ const MyArtAndCraftList = () => {
     const loadedArtAndCraft = useLoaderData();
     const [artAndCrafts, setArtAndCrafts] = useState(loadedArtAndCraft)
     let foundItem = false;
+    const [selectedCustomization, setSelectedCustomization] = useState('All');
 
 
 
@@ -49,15 +50,37 @@ const MyArtAndCraftList = () => {
 
     };
 
+    const filterArtAndCrafts = () => {
+        if (selectedCustomization === 'All') {
+            return artAndCrafts; // Return all items if 'All' is selected
+        } else {
+            return artAndCrafts.filter(item => item.customization === selectedCustomization);
+        }
+    };
+
     return (
         <div>
+
+
+            <div className="my-4">
+                <label htmlFor="customization" className="mr-2">Filter by Customization:</label>
+                <select id="customization" value={selectedCustomization} onChange={(e) => setSelectedCustomization(e.target.value)} className="px-2 py-1">
+                    <option value="All">All</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+
+
+
             <div className="max-w-7xl mx-auto my-10">
                 <h1 className="text-3xl font-semibold text-[#52c9af] my-10 text-center">Gallery Showcase</h1>
-                {artAndCrafts.length === 0 ? (
+                {filterArtAndCrafts().length === 0 ? (
                     <p className="text-gray-600 text-center">You have not created any art and crafts yet.</p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {artAndCrafts.map((item, index) => {
+                        {filterArtAndCrafts().map((item, index) => {
                             if (item.userEmail === user.email || item.displayName === user.displayName) {
                                 foundItem = true;
                                 return (
@@ -90,7 +113,7 @@ const MyArtAndCraftList = () => {
                             <div className="flex justify-center items-center h-screen border-2 w-[1000px]">
                                 <div className="bg-white rounded-lg shadow-md p-16  ">
                                     <div className="text-red-500 text-3xl mb-8 text-center">You have not created any cards. Lets start drawing!</div>
-                                    <Link to= '/addCraft'>
+                                    <Link to='/addCraft'>
                                         <button className="bg-[#52c9af] text-white px-6 py-3 rounded hover:bg-[#429b93] transition-colors duration-200 ease-in-out">Create a Card</button>
                                     </Link>
                                 </div>

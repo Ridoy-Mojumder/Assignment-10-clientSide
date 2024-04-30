@@ -57,6 +57,7 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(result => {
+                Swal.fire("LogIn Successfully");
                 console.log(result.user)
                 navigate("/");
             })
@@ -68,6 +69,7 @@ const Login = () => {
     const handleGithubSignIn = () => {
         signInWithGithub()
             .then(result => {
+                Swal.fire("LogIn Successfully");
                 console.log(result.user)
                 navigate("/");
             })

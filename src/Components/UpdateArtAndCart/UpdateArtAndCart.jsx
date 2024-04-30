@@ -1,12 +1,10 @@
-import { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import { FaImage, FaTag, FaPalette, FaStar, FaClock, FaDollarSign, FaUser, FaEnvelope } from 'react-icons/fa';
+
+import { FaImage, FaTag, FaPalette, FaStar, FaClock, FaDollarSign, FaEnvelope } from 'react-icons/fa';
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateArtAndCart = () => {
-    const { user } = useContext(AuthContext);
     const loadedData = useLoaderData();
 
     const handleUpdateArtAndCraft = e =>{
@@ -21,9 +19,7 @@ const UpdateArtAndCart = () => {
         const customization = form.customization.value;
         const processingTime = form.processingTime.value;
         const stockStatus = form.stockStatus.value;
-        const userEmail = form.userEmail.value;
-        const userName = form.userName.value;
-        const newArtAndCraft = {photoUrl, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userEmail, userName}
+        const newArtAndCraft = {photoUrl, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, }
         console.log(newArtAndCraft)
 
         fetch(`https://assignment-10-server-site-five.vercel.app/addCraft/${loadedData._id}`,{
@@ -159,25 +155,7 @@ const UpdateArtAndCart = () => {
                         </select>
                     </div>
 
-                    <div className="form-group flex flex-col">
-                        <label htmlFor="userEmail" className="flex items-center text-[#52c9af] mb-2 text-sm font-medium"><FaEnvelope className="mr-2 text-[#52c9af]" />User Email</label>
-                        <input 
-                        type="email" 
-                        id="userEmail" 
-                        name='userEmail'
-                        value={user.email} 
-                        className="rounded-lg border border-[#52c9af] bg-transparent px-4 py-2 text-[#52c9af] ring-offset-1 duration-200 focus:outline-none focus:ring-2" readOnly  />
-                    </div>
-
-                    <div className="form-group flex flex-col">
-                        <label htmlFor="userName" className="flex items-center text-[#52c9af] mb-2 text-sm font-medium"><FaUser className="mr-2 text-[#52c9af]" />User Name</label>
-                        <input 
-                        type="text" 
-                        id="userName" 
-                        name='userName'
-                        value={user.displayName} 
-                        className="rounded-lg border border-[#52c9af] bg-transparent px-4 py-2 text-[#52c9af] ring-offset-1 duration-200 focus:outline-none focus:ring-2" readOnly  />
-                    </div>
+                    
                 </div>
 
                 <div className="text-center">
