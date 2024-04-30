@@ -38,25 +38,27 @@ const ArtAndCraftDetails = () => {
                     </div>
                     {/* bio  */}
                     <p className="pb-2 text-center text-sm text-gray-500">{shortDescription}</p>
-                    <p className="pb-2 text-center text-sm text-gray-500">{stockStatus}</p>
-                    <p className="pb-2 text-center text-sm text-gray-500">{customization}</p>
+                    <div className="flex justify-around gap-36">
+                        <p className="pb-2 text-sm text-green-400"><span className="font-bold">Stock Status:</span> {stockStatus}</p>
+                        <p className="pb-2  text-sm text-sky-400"><span className="font-bold">Customization:</span> {customization}</p>
+                    </div>
                     {/* social icons  */}
                     <div className="flex justify-between gap-4 py-2">
                         {svgs?.map((svg, idx) => (<div key={idx} className="rounded-full shadow-[0px_2px_8px_0px_rgba(99,99,99,0.4)]  duration-300 hover:scale-150">{svg?.svg}</div>))}
                     </div>
 
                     <Link to='/'>
-                        <div className="w-[500px]">
+                        <div className="w-[400px]">
                             <button className="w-full rounded-lg py-2 font-medium text-gray-400 shadow-[0px_0px_10px_#E2DADA] duration-500 hover:scale-95  hover:bg-[#0095FF] hover:text-white hover:shadow-xl dark:shadow-[0px_2px_8px_0px_rgba(0,0,0,0.8)]">Go Back Home</button>
                         </div>
                     </Link>
                     <Link to='/allArtAndCrafts'>
-                        <div className="w-[500px]">
+                        <div className="w-[400px]">
                             <button className="w-full rounded-lg py-2 font-medium text-gray-400 shadow-[0px_0px_10px_#E2DADA] duration-500 hover:scale-95  hover:bg-[#0095FF] hover:text-white hover:shadow-xl dark:shadow-[0px_2px_8px_0px_rgba(0,0,0,0.8)]">Go Back AllArt&Crafts</button>
                         </div>
                     </Link>
                     <Link to='/myArtAndCraftList'>
-                        <div className="w-[500px]">
+                        <div className="w-[400px]">
                             <button className="w-full rounded-lg py-2 font-medium text-gray-400 shadow-[0px_0px_10px_#E2DADA] duration-500 hover:scale-95  hover:bg-[#0095FF] hover:text-white hover:shadow-xl dark:shadow-[0px_2px_8px_0px_rgba(0,0,0,0.8)]">Go Back MyArt&Craft</button>
                         </div>
                     </Link>

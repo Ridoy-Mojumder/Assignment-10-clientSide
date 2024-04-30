@@ -23,7 +23,7 @@ const AddCraft = () => {
         console.log(newArtAndCraft)
 
 
-        fetch('http://localhost:5000/addCraft',{
+        fetch('https://assignment-10-server-site-five.vercel.app/addCraft',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -82,7 +82,7 @@ const AddCraft = () => {
                             <option value="">Select Subcategory</option>
                             <option value="Landscape Painting">Landscape Painting</option>
                             <option value="Portrait Drawing">Portrait Drawing</option>
-                            <option value="Watercolor Painting">Watercolor Painting</option>
+                            <option value="Watercolour Painting">Watercolor Painting</option>
                             <option value="Oil Painting">Oil Painting</option>
                             <option value="Charcoal Sketching">Charcoal Sketching</option>
                             <option value="Cartoon Drawing">Cartoon Drawing</option>
@@ -156,7 +156,7 @@ const AddCraft = () => {
                         id="userEmail" 
                         name='userEmail'
                         value={user.email} 
-                        className="rounded-lg border border-[#52c9af] bg-transparent px-4 py-2 text-[#52c9af] ring-offset-1 duration-200 focus:outline-none focus:ring-2" required />
+                        className="rounded-lg border border-[#52c9af] bg-transparent px-4 py-2 text-[#52c9af] ring-offset-1 duration-200 focus:outline-none focus:ring-2" readOnly />
                     </div>
 
                     <div className="form-group flex flex-col">
@@ -166,7 +166,7 @@ const AddCraft = () => {
                         id="userName" 
                         name='userName'
                         value={user.displayName} 
-                        className="rounded-lg border border-[#52c9af] bg-transparent px-4 py-2 text-[#52c9af] ring-offset-1 duration-200 focus:outline-none focus:ring-2" required />
+                        className="rounded-lg border border-[#52c9af] bg-transparent px-4 py-2 text-[#52c9af] ring-offset-1 duration-200 focus:outline-none focus:ring-2" readOnly />
                     </div>
                 </div>
 

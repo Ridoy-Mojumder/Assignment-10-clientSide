@@ -10,6 +10,7 @@ import SignUp from "../Components/LoginPage/SignUp";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ArtAndCraftDetails from "../Components/AllArtAndCrafts/ArtAndCraftDetails";
 import UpdateArtAndCart from "../Components/UpdateArtAndCart/UpdateArtAndCart";
+import IndivisualArtAndCraftCategory from "../Components/ArtAndCraftCategory/IndivisualArtAndCraftCategory";
 
 export const router = createBrowserRouter([
     {
@@ -20,22 +21,27 @@ export const router = createBrowserRouter([
         {
           path: "/",
           element: <Home />,
-          loader: () => fetch('http://localhost:5000/addCraft')
+          loader: () => fetch('https://assignment-10-server-site-five.vercel.app/addCraft')
         },
         {
           path: "/allArtAndCrafts",
           element: <AllArtAndCrafts />,
-          loader: () => fetch('http://localhost:5000/addCraft')
+          loader: () => fetch('https://assignment-10-server-site-five.vercel.app/addCraft')
         },
         {
           path: "/allArtAndCrafts/:id",
           element: <ArtAndCraftDetails />,
-          loader: ({params}) => fetch(`http://localhost:5000/addCraft/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-10-server-site-five.vercel.app/addCraft/${params.id}`)
+        },
+        {
+          path: "/IndivisualArtAndCraftsCategory/:subcategoryName",
+          element: <IndivisualArtAndCraftCategory/>,
+          loader: ({params}) => fetch(`https://assignment-10-server-site-five.vercel.app/artAndCraftCategory/${params.subcategoryName}`)
         },
         {
           path: "/updateArtAndCrafts/:id",
           element: <PrivateRoute><UpdateArtAndCart /></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/addCraft/${params.id}`)
+          loader: ({params}) => fetch(`https://assignment-10-server-site-five.vercel.app/addCraft/${params.id}`)
         },
         {
           path: "/addCraft",
@@ -44,7 +50,7 @@ export const router = createBrowserRouter([
         {
           path: "/myArtAndCraftList",
           element: <PrivateRoute><MyArtAndCraftList /></PrivateRoute>,
-          loader: () => fetch('http://localhost:5000/addCraft')
+          loader: () => fetch('https://assignment-10-server-site-five.vercel.app/addCraft')
         },
         {
           path: "/logIn",

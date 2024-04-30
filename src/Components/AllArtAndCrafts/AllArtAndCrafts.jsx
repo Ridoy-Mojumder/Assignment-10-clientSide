@@ -24,7 +24,7 @@ const AllArtAndCrafts = () => {
 
                         <th className="px-6 py-4 text-start">Photo</th>
                         <th className="px-6 py-4 text-start">Item Name</th>
-                        <th className="px-6 py-4 text-start">Short Description</th>
+                        <th className="px-6 py-4 text-start hidden md:flex">Short Description</th>
                         <th className="px-6 py-4 text-start">Price</th>
                         <th className="px-6 py-4 text-start">Actions</th>
                     </tr>
@@ -37,7 +37,7 @@ const AllArtAndCrafts = () => {
                                 <img className="h-[64px] w-[84px] rounded-full bg-[#2da58b] object-cover" src={item.photoUrl} />
                             </th>
                             <th className="px-6 py-4 text-start ">{item.itemName}</th>
-                            <th className="px-6 py-4 text-start ">{item.shortDescription}</th>
+                            <th className="px-6 py-4 text-start hidden md:flex">{item.shortDescription}</th>
                             <th className="px-6 py-4 text-start ">{item.price}</th>
                             <th className="px-6 py-4 text-start">
                                 <Link to={`/allArtAndCrafts/${item._id}`}>

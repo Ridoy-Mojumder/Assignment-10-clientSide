@@ -10,7 +10,7 @@ const Login = () => {
         password: ''
     });
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState('');
     const [password, setPassword] = useState(false);
@@ -33,7 +33,7 @@ const Login = () => {
         const { email, password } = formData;
         setLoading(true);
         setErrors('');
-    
+
         await signIn(email, password)
             .then(() => {
                 Swal.fire("LogIn Successfully");
@@ -54,7 +54,29 @@ const Login = () => {
             });
     };
 
-    
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                navigate("/");
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                console.log(result.user)
+                navigate("/");
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-[#93cabe]/20 p-6 md:p-0">
@@ -74,13 +96,13 @@ const Login = () => {
                 <div className="w-full bg-white py-10 md:w-[50%] lg:w-[60%]">
                     <h2 className="pb-8 text-center text-3xl font-bold text-[#82e0cc]">Login Here</h2>
                     <form className="flex flex-col items-center gap-4" onSubmit={handleSubmit}>
-                        <input 
-                        className="w-[80%] md:w-[60%] rounded-lg border border-[#82e0cc] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#a3ddd1]/50" 
-                        value={formData.name} 
-                        onChange={handleChange} 
-                        type="email" 
-                        placeholder="Email" 
-                        name="email" />
+                        <input
+                            className="w-[80%] md:w-[60%] rounded-lg border border-[#82e0cc] px-6 py-2 focus:outline-none focus:ring-2 focus:ring-[#a3ddd1]/50"
+                            value={formData.name}
+                            onChange={handleChange}
+                            type="email"
+                            placeholder="Email"
+                            name="email" />
                         <div className="relative w-[80%] md:w-[60%]">
                             <input
                                 className="w-full rounded-lg border border-[#82e0cc] px-6 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-[#a3ddd1]/50 block outline-none text-black"
@@ -119,16 +141,20 @@ const Login = () => {
                     </div>
                     {/* Sign with Google */}
                     <div className="flex justify-center">
-                        <div className="flex items-center justify-center h-[50px] w-[200px] overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow mx-2">
-                            <div className="flex items-center justify-center h-full w-[50%] bg-[#82e0cc] text-sm text-white">Sign With</div>
-                            <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#82e0cc] group-hover:hidden"></span>
-                            <span className="text-4xl font-bold text-[#82e0cc]">G+</span>
-                        </div>
-                        <div className="flex items-center justify-center h-[50px] w-[200px] overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow mx-2">
-                            <div className="flex items-center justify-center h-full w-[50%] bg-[#82e0cc] text-sm text-white">Sign With</div>
-                            <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#82e0cc] group-hover:hidden"></span>
-                            <span className="text-4xl font-bold text-[#82e0cc]">Git</span>
-                        </div>
+                        <button onClick={handleGoogleSignIn}>
+                            <div className="flex items-center justify-center h-[50px] w-[200px] overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow mx-2">
+                                <div className="flex items-center justify-center h-full w-[50%] bg-[#82e0cc] text-sm text-white">Sign With</div>
+                                <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#82e0cc] group-hover:hidden"></span>
+                                <span className="text-4xl font-bold text-[#82e0cc]">G+</span>
+                            </div>
+                        </button>
+                        <button onClick={handleGithubSignIn}>
+                            <div className="flex items-center justify-center h-[50px] w-[200px] overflow-hidden rounded-full shadow-md duration-300 hover:scale-95 hover:shadow mx-2">
+                                <div className="flex items-center justify-center h-full w-[50%] bg-[#82e0cc] text-sm text-white">Sign With</div>
+                                <span className="right-0 top-0 h-0 w-0 -rotate-90 border-b-[50px] border-r-[50px] border-b-transparent border-r-[#82e0cc] group-hover:hidden"></span>
+                                <span className="text-4xl font-bold text-[#82e0cc]">Git</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>

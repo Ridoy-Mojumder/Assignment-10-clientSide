@@ -1,24 +1,16 @@
-import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
 
     const { user, logOut, loadingState } = useContext(AuthContext);
-    const [showUserName, setShowUserName] = useState(false);
-    const [profilePicLoaded, setProfilePicLoaded] = useState(false);
 
-    if (loadingState && !profilePicLoaded) {
+    if (loadingState) {
         return <span className="loading loading-spinner text-info"></span>;
     }
-    const handleMouseEnter = () => {
-        setShowUserName(true);
-    };
 
-    const handleMouseLeave = () => {
-        setShowUserName(false);
-    };
 
 
 
@@ -65,26 +57,27 @@ const Navbar = () => {
                                 {items}
                             </ul>
                         </div>
-
-                        <div className="navbar-end ">
+                        <div className="navbar-end gap-4">
                             {user ? (
-                                <div className="flex ">
+                                <div className="flex items-center">
                                     <div className="relative inline-block">
-                                        <img
-                                            src={user.photoURL}
-                                            alt="User Profile"
-                                            className="h-12 w-12 rounded-full cursor-pointer ml-10 p-1 "
-                                            onMouseEnter={handleMouseEnter}
-                                            onMouseLeave={handleMouseLeave}
-                                            onLoad={() => setProfilePicLoaded(true)}  // Set loaded state to true when the image loads
-                                            onError={() => setProfilePicLoaded(false)}  // Handle error in loading image
-                                        />
-                                        {showUserName && (
-                                            <span className="absolute left-14 top-0 text-sm text-black bg-white shadow-md p-2 rounded-md">{user.displayName}</span>
-                                        )}
+                                        
+                                        <div className="pointer group relative mx-auto  flex h-10 w-max justify-center">
+                                            <img
+                                                src={user.photoURL}
+                                                alt="User Profile"
+                                                className="h-12 w-12  rounded-full cursor-pointer border border-[#278f7d] "
+                                            />
+                                            {/* Hover Text */}
+                                            <div className="absolute -bottom-12 cursor-pointer whitespace-nowrap opacity-0 duration-500 hover:hidden group-hover:-bottom-16 group-hover:opacity-100  ">
+                                                <p className="rounded-md bg-[#278f7d] px-3 py-2 text-white shadow-[0px_0px_10px_0px_#278f7d]"> {user.displayName}</p>
+                                                <span className="absolute -top-2 left-[50%] h-0 w-0 -translate-x-1/2 -rotate-[45deg] border-b-[20px] border-r-[20px] border-b-transparent border-r-[#278f7d] shadow-[0px_0px_10px_0px_#278f7d]"></span>
+                                            </div>
+                                            {/* Hover button */}
+                                        </div>
                                     </div>
                                     <button
-                                        className='ml-16 md:ml-16 p-3 text-white text-[14px] font-semibold rounded-md shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-300 bg-gradient-to-r from-red-400 to-red-500'
+                                        className='ml-16 p-2 text-white text-[14px] font-semibold rounded-md shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-all duration-300 bg-gradient-to-r from-red-400 to-red-500'
                                         onClick={logOut}
                                     >
                                         Logout
@@ -92,14 +85,13 @@ const Navbar = () => {
                                 </div>
                             ) : (
                                 <div className="flex gap-3">
-
                                     <div className="flex items-center justify-between gap-5">
-                                        <Link to='/logIn'>
+                                        <NavLink to='/logIn'>
                                             <button className="rounded-full bg-[#52c9af] px-6 py-2 transition-all duration-300 hover:scale-90 font-bold text-white">LogIn</button>
-                                        </Link>
-                                        <Link to='/signUp'>
+                                        </NavLink>
+                                        <NavLink to='/signUp'>
                                             <button className="rounded-full bg-[#52c9af] px-6 py-2 transition-all duration-300 hover:scale-90 font-bold text-white">Register</button>
-                                        </Link>
+                                        </NavLink>
                                     </div>
                                 </div>
                             )}

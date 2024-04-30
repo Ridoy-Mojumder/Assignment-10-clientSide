@@ -52,7 +52,7 @@ const Footer = () => {
 
                     {/* Site Map */}
                     <div>
-                        <h3 className="text-lg font-bold mb-3">Site Map</h3>
+                        <h3 className="text-lg font-bold mb-3">Art and Craft Store</h3>
                         <ul>
                             <li><a href="#">Home</a></li>
                             <li><a href="#">About Us</a></li>

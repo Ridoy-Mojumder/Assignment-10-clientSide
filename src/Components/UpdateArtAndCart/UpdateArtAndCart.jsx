@@ -26,7 +26,7 @@ const UpdateArtAndCart = () => {
         const newArtAndCraft = {photoUrl, itemName, subcategoryName, shortDescription, price, rating, customization, processingTime, stockStatus, userEmail, userName}
         console.log(newArtAndCraft)
 
-        fetch(`http://localhost:5000/addCraft/${loadedData._id}`,{
+        fetch(`https://assignment-10-server-site-five.vercel.app/addCraft/${loadedData._id}`,{
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

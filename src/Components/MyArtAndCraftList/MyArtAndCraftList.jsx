@@ -28,7 +28,7 @@ const MyArtAndCraftList = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/addCraft/${_id}`, {
+                fetch(`https://assignment-10-server-site-five.vercel.app/addCraft/${_id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -51,20 +51,23 @@ const MyArtAndCraftList = () => {
 
     return (
         <div>
-            <div className="max-w-5xl mx-auto my-10">
+            <div className="max-w-7xl mx-auto my-10">
                 <h1 className="text-3xl font-semibold text-[#52c9af] my-10 text-center">Gallery Showcase</h1>
                 {artAndCrafts.length === 0 ? (
                     <p className="text-gray-600 text-center">You have not created any art and crafts yet.</p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {artAndCrafts.map((item, index) => {
-                            if (item.userEmail === user.email) {
+                            if (item.userEmail === user.email || item.displayName === user.displayName) {
                                 foundItem = true;
                                 return (
                                     <div key={index} className="bg-white rounded-lg shadow-md p-6">
                                         <img src={item.photoUrl} alt={item.itemName} className="w-full h-40 object-cover mb-4 rounded-lg" />
                                         <h2 className="text-lg font-semibold text-gray-800 mb-2">{item.itemName}</h2>
                                         <p className="text-sm text-gray-600 mb-4">{item.shortDescription}</p>
+                                        <p className="text-sm text-gray-600 mb-4">Rating: {item.rating}</p>
+                                        <p className="text-sm text-gray-600 mb-4">Stock Status: {item.stockStatus}</p>
+                                        <p className="text-sm text-gray-600 mb-4">Customization: {item.customization}</p>
                                         <div className="flex items-center justify-between">
                                             <span className="text-lg text-[#52c9af] font-bold">${item.price}</span>
                                             <Link to={`/allArtAndCrafts/${item._id}`}>
