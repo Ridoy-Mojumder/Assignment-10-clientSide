@@ -1,21 +1,25 @@
-Category: Art and Craft Marketplace
+# Art and Craft Store Client Side
 
-Art and Craft Store
+## Project Overview
+Art and Craft Store Client Side is the front-end component of CraftyHub, a marketplace dedicated to art and craft enthusiasts. It connects artisans with buyers worldwide, providing a platform for showcasing and purchasing unique handmade creations.
 
-Art and Craft Store is your go-to destination for all things art and craft, connecting artisans and enthusiasts alike. Explore a world of creativity and inspiration with our vibrant community!
+## Features
+- **Browse Unique Creations:** Explore a diverse collection of handmade art and crafts from artisans globally.
+- **Personalized Recommendations:** Tailored suggestions based on user preferences to discover the perfect piece.
+- **Sell Your Creations:** Artisans can showcase and sell their handmade products to a global audience.
 
+## Technology Used
+- **Frontend Framework:** React.js
+- **Styling:** Tailwind CSS
+- **State Management:** Redux Toolkit
+- **API Integration:** Axios
+- **Deployment:** Netlify
 
-Browse Unique Creations: Discover a diverse collection of handmade art and crafts from talented artisans around the globe.
+## Local Setup Instructions
+1. Clone the repository: `git clone https://github.com/Ridoy-Mojumder/Assignment-10-clientSide`
+2. Navigate to the project directory: `cd Assignment-10-clientSide`
+3. Install dependencies: `npm install`
+4. Set up environment variables if necessary.
+5. Start the development server: `npm run dev`
+6. The application will be running on `http://localhost:5000`
 
-Personalized Recommendations: Tailored suggestions based on your preferences ensure you never miss out on the perfect piece for your collection.
-
-Sell Your Creations: Are you an artisan? Showcase your work to a global audience and turn your passion into profit.
-
-Community Engagement: Join discussions, share tips, and connect with fellow crafters in our thriving online community.
-
-Secure Transactions: Rest easy knowing that your transactions are safe and secure, whether you're buying or selling.
-
-Visit CraftyHub now and let your creativity flourish!
-
-
-Live Site URL: https://6630a94cbf6a2e9a106b8b46--tangerine-snickerdoodle-50d788.netlify.app/
